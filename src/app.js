@@ -1,5 +1,6 @@
 import express, { json } from 'express';
 import morgan from 'morgan';
+import bodyParser from 'body-parser';
 
 //Importing routes
 import projectRoutes from './routes/projects';
@@ -12,6 +13,9 @@ const app = express();
 app.use(morgan('dev')); // para entender por consola lo que viene llegandi
 app.use(json()); // para entender datos en formato json
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // routes
 app.use('/api/projects', projectRoutes);
